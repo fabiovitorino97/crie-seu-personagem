@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie Seu Personagem</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crie Seu Personagem!</h1>
+        <div class="mute-unmute">
+             <button id="mute-btn">Silenciar</button>
+        </div>
+        <div class="character-preview">
+            <!-- Camadas para cada categoria -->
+            <img id="genero-layer" class="layer" src="" alt="">
+            <img id="cor_olhos-layer" class="layer" src="" alt="">
+            <img id="boca-layer" class="layer" src="" alt="">
+            <img id="orelhas-layer" class="layer" src="" alt="">
+            <img id="cabelo-layer" class="layer" src="" alt="">
+            <img id="cor_cabelo-layer" class="layer" src="" alt="">
+            <img id="roupa-layer" class="layer" src="" alt="">
+        </div>
+        <div class="controls">
+            <p id="current-category">Escolha o gênero</p>
+            <button id="pause-play-btn">Pausar</button>
+            <button id="select-btn" disabled>Selecionar</button>
+            <button id="reset-btn" style="display: none;">Reiniciar</button>
+            <button id="save-btn" style="display: none;">Salvar Imagem</button>
+        </div>
+                <!-- Elementos de áudio -->
+        <audio id="theme-audio" src="./songs/theme.mp3" loop></audio>
+        <audio id="select-audio" src="./songs/select.mp3"></audio>
+        <audio id="win-audio" src="./songs/win.mp3"></audio>
+    </div>
+    <script src="./js/scripts.js"></script>
+</body>
+</html>
