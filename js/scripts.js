@@ -66,7 +66,7 @@ let currentOptionIndex = 0;
 let isPaused = false;
 let intervalId = null;
 let selectedOptions = {}; // Armazena as escolhas feitas
-let isMuted = false; // Controla o estado do som
+let isMuted = true; // Controla o estado do som
 
 const currentCategoryElement = document.getElementById('current-category');
 const pausePlayBtn = document.getElementById('pause-play-btn');
@@ -77,9 +77,6 @@ const saveBtn = document.getElementById('save-btn');
 const themeAudio = document.getElementById('theme-audio');
 const selectAudio = document.getElementById('select-audio');
 const winAudio = document.getElementById('win-audio');
-
-// Inicia a música de fundo
-themeAudio.play().catch(error => console.error('Erro ao tocar música de fundo:', error));
 
 // Inicia o loop da primeira categoria
 startCategoryLoop();
@@ -92,6 +89,12 @@ function startCategoryLoop() {
     pausePlayBtn.textContent = 'Pausar';
     resetBtn.style.display = 'none'; // Esconde o botão de reiniciar
     saveBtn.style.display = 'none'; // Esconde o botão de salvar
+    
+    // Toca a música de fundo se não estiver silenciada
+    if (!isMuted) {
+        themeAudio.currentTime = 0; // Reseta para o início
+        themeAudio.play().catch(error => console.error('Erro ao tocar música de fundo:', error));
+    }
     
     // Define as opções para a categoria atual
     let options = category.options;
@@ -300,8 +303,10 @@ muteBtn.addEventListener('click', () => {
         winAudio.pause();
     } else {
         if (currentCategoryIndex < categories.length) {
+            themeAudio.currentTime = 0;
             themeAudio.play().catch(error => console.error('Erro ao tocar música de fundo:', error));
         } else {
+            winAudio.currentTime = 0;
             winAudio.play().catch(error => console.error('Erro ao tocar som de vitória:', error));
         }
     }
